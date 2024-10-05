@@ -25,6 +25,9 @@ jobs:
       - name: Build Debian package for arm64
         run: |
           cd buffyboard
+          export CC=aarch64-linux-gnu-gcc
+          export CXX=aarch64-linux-gnu-g++
+          export AR=aarch64-linux-gnu-ar
           sudo dpkg-buildpackage -a arm64 -us -uc
 
       # Step 5: Save the build artifacts (the .deb files)
