@@ -1,0 +1,15 @@
+Source: buffyboard
+Section: utils
+Priority: optional
+Maintainer: Johannes Marbach <you@example.com>
+Build-Depends: debhelper (>= 11), meson, libinput-dev, libxkbcommon-dev, udev, linux-headers
+Standards-Version: 4.5.1
+Homepage: https://example.com
+Vcs-Git: https://example.com/yourrepo.git
+Vcs-Browser: https://example.com
+
+Package: buffyboard
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libinput
+Description: Touch-enabled framebuffer keyboard for vampire slayers
+ This is a touch-enabled framebuffer keyboard.
