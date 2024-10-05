@@ -24,6 +24,7 @@ jobs:
       # Step 4: Build the package
       - name: Build Debian package for arm64
         run: |
+          cd buffyboard
           sudo dpkg-buildpackage -a arm64 -us -uc
 
       # Step 5: Save the build artifacts (the .deb files)
