@@ -15,7 +15,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y build-essential devscripts debhelper meson libinput-dev libxkbcommon-dev udev gcc-aarch64-linux-gnu
+          sudo apt-get install -y build-essential devscripts debhelper meson libinput-dev libxkbcommon-dev udev gcc-aarch64-linux-gnu libinput-dev:arm64 libxkbcommon-dev:arm64
 
       # # Step 3: Prepare the build environment (arm64)
       # - name: Set architecture for arm64
