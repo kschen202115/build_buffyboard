@@ -1,0 +1,34 @@
+name: Build Debian Package for ARM64
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-arm64:
+    runs-on: ubuntu-22.04  # Ubuntu Runner
+    steps:
+      # Step 1: Checkout the code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Install necessary dependencies for building the package
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential devscripts debhelper meson libinput-dev libxkbcommon-dev udev linux-headers-arm64-cross gcc-aarch64-linux-gnu
+
+      # Step 3: Prepare the build environment (arm64)
+      - name: Set architecture for arm64
+        run: dpkg --add-architecture arm64 && sudo apt-get update
+
+      # Step 4: Build the package
+      - name: Build Debian package for arm64
+        run: |
+          dpkg-buildpackage -a arm64 -us -uc
+
+      # Step 5: Save the build artifacts (the .deb files)
+      - name: Upload built Debian packages
+        uses: actions/upload-artifact@v3
+        with:
+          name: buffyboard-deb-packages
+          path: ../*.deb
