@@ -19,12 +19,12 @@ jobs:
 
       # Step 3: Prepare the build environment (arm64)
       - name: Set architecture for arm64
-        run: dpkg --add-architecture arm64 && sudo apt-get update
+        run: sudo dpkg --add-architecture arm64 && sudo apt-get update
 
       # Step 4: Build the package
       - name: Build Debian package for arm64
         run: |
-          dpkg-buildpackage -a arm64 -us -uc
+          sudo dpkg-buildpackage -a arm64 -us -uc
 
       # Step 5: Save the build artifacts (the .deb files)
       - name: Upload built Debian packages
