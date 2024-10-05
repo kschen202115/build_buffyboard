@@ -1,4 +1,7 @@
 #!/usr/bin/make -f
+# 设置交叉编译器
+export CC=aarch64-linux-gnu-gcc
+export CXX=aarch64-linux-gnu-g++
 
 # 设置构建系统
 %:
